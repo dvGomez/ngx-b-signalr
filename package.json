@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:prod": "ng build ngx-b-signalr --prod",
-    "build:ci": "npm run clean && npm run build:prod"
+    "build:ci": "npm run build:prod"
   },
   "private": true,
   "dependencies": {
