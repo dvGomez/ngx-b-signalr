@@ -1,10 +1,14 @@
 {
   "name": "ngx-b-signalr",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
     "@microsoft/signalr": "^6.0.5"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/dvGomez/ngx-b-signalr"
   },
   "dependencies": {
     "tslib": "^2.3.0"
