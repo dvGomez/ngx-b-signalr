@@ -12,7 +12,7 @@ export class SignalRService {
 
 	static _listeners: {
 		roomName: string,
-		handlers: Function[],
+		handlers: {Identifier : number, Handler : Function}[],
 		baseListener: (...args: any[]) => void
 	}[] = []
 
@@ -22,7 +22,7 @@ export class SignalRService {
 		return this._hubConnection;
 	}
 
-	static RegisterRoomListener(roomName: string, handler: Function) {
+	static RegisterRoomListener(roomName: string, handler: Function, handlerId : number) {
 		var listener = this._listeners.find(x => x.roomName == roomName);
 		if (!listener) {
 			this._hubConnection.off(roomName);
@@ -30,7 +30,7 @@ export class SignalRService {
 			let baseListener = (...args: any[]) => {
 				for (let i = 0; i < listener!.handlers.length; i++) {
 					const handler = listener!.handlers[i];
-					handler(...args);
+					handler.Handler(...args);
 				}
 			}
 
@@ -44,14 +44,17 @@ export class SignalRService {
 
 			this._listeners.push(listener);
 		}
-		listener.handlers.push(handler);
+		listener.handlers.push({
+            Handler: handler,
+            Identifier: handlerId
+        });
 	}
 
-	static UnregisterRoomListener(handler: Function) {
+	static UnregisterRoomListener(handlerId: number) {
 		for (let index = this._listeners.length - 1; index >= 0; index--) {
 			const listener = this._listeners[index];
 
-			var handlerObjIndx = listener.handlers.findIndex(x => x == handler);
+			var handlerObjIndx = listener.handlers.findIndex(x => x.Identifier == handlerId);
 			console.log(handlerObjIndx);
 
 			if (handlerObjIndx > -1) {
