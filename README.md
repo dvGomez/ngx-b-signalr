@@ -13,7 +13,7 @@ Before add the lib to your project, install de signalr official lib ([click here
 
 	**npm:**
 	```
-    npm install ngx-b-toolkit
+    npm install ngx-b-signalr
 	```
 
 2. Add the **BSignalrModule** to your `app.module.ts` and import your environment variable:
@@ -86,6 +86,7 @@ The subscription is a way to receive messages from a specified room.
 |Framework|Version  |
 |-----------|--|
 |Angular           | 13.x.x |
+|@microsoft/signalr| 6.0.5
 |Microsoft.AspNetCore.SignalR| 1.1.0
 
 > Tip: The lib was not tested in previous versions of angular, fell free to give us a feedback ;)

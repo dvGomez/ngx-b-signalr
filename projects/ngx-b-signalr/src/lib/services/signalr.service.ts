@@ -55,7 +55,6 @@ export class SignalRService {
 			const listener = this._listeners[index];
 
 			var handlerObjIndx = listener.handlers.findIndex(x => x.Identifier == handlerId);
-			console.log(handlerObjIndx);
 
 			if (handlerObjIndx > -1) {
 				listener.handlers.splice(handlerObjIndx, 1);
@@ -103,7 +102,7 @@ export class SignalRService {
 	}
 
 	public async connect() {
-		console.log(`Trying to establish a secure connection with socket server...`);
+		console.log(`Trying to establish a secure connection with server...`);
 		await SignalRService.HubConnection.start()
 			.then(x => {
 			})
